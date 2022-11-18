@@ -13,12 +13,13 @@
     </v-navigation-drawer>
 
     <v-main>
-      <v-container>Content area</v-container>
+      <v-container>
+        <RouterView />
+      </v-container>
     </v-main>
 
     <v-bottom-navigation>v-bottom-navigator</v-bottom-navigation>
   </v-app>
-  <RouterView />
 </template>
 
 <script>
