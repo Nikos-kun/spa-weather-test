@@ -1,12 +1,16 @@
 <template>
   <v-app>
-    <v-app-bar
-      >v-app-bar-area
-      <RouterLink class="router-link" to="/">Home</RouterLink>
-      <RouterLink class="router-link" to="/about">About</RouterLink>
+    <v-app-bar>
+      <v-app-bar-title>Spa-Weather-Test</v-app-bar-title>
     </v-app-bar>
 
-    <v-navigation-drawer>v-navigation-drawer area</v-navigation-drawer>
+    <v-navigation-drawer v-model="drawer" location="left" expand-on-hover rail>
+      <v-list :items="items">
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.route">{{
+          item.title
+        }}</v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
     <v-main>
       <v-container>Content area</v-container>
@@ -18,9 +22,29 @@
 </template>
 
 <script>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 
-export default {};
+export default {
+  data() {
+    return {
+      drawer: true,
+      items: [
+        {
+          title: "Home",
+          route: "/",
+        },
+        {
+          title: "About",
+          route: "/about",
+        },
+      ],
+    };
+  },
+};
 </script>
 
-<style scoped></style>
+<style lang="css" scoped>
+.router-link {
+  background-color: beige;
+}
+</style>
