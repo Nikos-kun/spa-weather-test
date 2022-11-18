@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SearchCountry from "../components/SearchCountry.vue";
+import SearchCountry from "../components/SearchCity.vue";
 import ShowCountryResults from "../components/ShowCountryResults.vue";
 
 export default {

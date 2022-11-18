@@ -1,32 +1,36 @@
 <template>
   <div class="col">
-    <h2>Start by searching for a country</h2>
+    <h2>Start by searching for a city</h2>
 
     <div class="search-country">
       <v-text-field
         clearable
-        label="Search for a country"
+        label="Type the name of a city here"
         variant="underlined"
         v-model="countryText"
       ></v-text-field>
-      <v-btn @click="searchCountry" class="btn" color="blue">Search</v-btn>
+      <v-btn @click="searchCity" class="btn" color="blue">Search</v-btn>
     </div>
   </div>
 </template>
 
 <script>
-import { geocodingAPI } from "../services/geocodingAPI";
+import { mapActions } from "pinia";
+import { useCountriesStore } from "../stores/countries";
 
 export default {
   data() {
     return {
       countryText: "",
+      units: "metric",
     };
   },
 
   methods: {
-    async searchCountry() {
-      res = await geocodingAPI.searchByCity(this.countryText, "metric");
+    ...mapActions(useCountriesStore, ["setCountries"]),
+
+    async searchCity() {
+      await this.setCountries(this.countryText, this.units);
     },
   },
 };
