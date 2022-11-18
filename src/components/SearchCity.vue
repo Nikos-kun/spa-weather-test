@@ -7,7 +7,7 @@
         clearable
         label="Type the name of a city here"
         variant="underlined"
-        v-model="countryText"
+        v-model="cityText"
       ></v-text-field>
       <v-btn @click="searchCity" class="btn" color="blue">Search</v-btn>
     </div>
@@ -21,7 +21,7 @@ import { useCountriesStore } from "../stores/countries";
 export default {
   data() {
     return {
-      countryText: "",
+      cityText: "",
       units: "metric",
     };
   },
@@ -30,7 +30,7 @@ export default {
     ...mapActions(useCountriesStore, ["setCountries"]),
 
     async searchCity() {
-      await this.setCountries(this.countryText, this.units);
+      await this.setCountries(this.cityText, this.units);
     },
   },
 };
