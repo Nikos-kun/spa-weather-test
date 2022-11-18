@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import { geocodingAPI } from "../services/geocodingAPI";
+import { geocodingAPI } from "../services/api";
 
 export const useCountriesStore = defineStore("countriesStore", {
   state: () => ({
