@@ -27,7 +27,7 @@ export const forecastAPI = {
         const apiKey = "855837ba33dd388bf3eef950736fcf2d";
 
         const res = await axios.get(
-            "api.openweathermap.org/data/2.5/forecast",
+            "https://api.openweathermap.org/data/2.5/forecast",
             {
             params: { lat: lat, lon: lon, appid: apiKey, units: units },
             }
