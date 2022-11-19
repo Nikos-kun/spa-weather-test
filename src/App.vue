@@ -33,11 +33,7 @@ export default {
         {
           title: "Home",
           route: "/",
-        },
-        {
-          title: "About",
-          route: "/about",
-        },
+        }
       ],
     };
   },
