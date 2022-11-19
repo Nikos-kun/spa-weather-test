@@ -1,25 +1,27 @@
 <template>
   <main>
     <SearchCountry />
-    <ShowCountryResults />
+    <CityCard />
+    <CityWeather />
   </main>
 </template>
 
 <script>
 import SearchCountry from "../components/SearchCity.vue";
-import ShowCountryResults from "../components/ShowCountryResults.vue";
+import CityCard from "../components/CityCard.vue";
+import CityWeather from "../components/CityWeather.vue";
 
 export default {
   components: {
     SearchCountry,
-    ShowCountryResults
+    CityCard,
+    CityWeather,
   },
 
   data() {
     return {};
   },
 
-  async mounted() {
-  },
+  async mounted() {},
 };
 </script>

@@ -6,12 +6,18 @@ export const useCountriesStore = defineStore("countriesStore", {
   state: () => ({
     countries: [],
     weather: {},
+    firstTime: true,
+    showWeatherModal: false,
   }),
 
   getters: {
     getCountries: (state) => state.countries,
 
     getWeather: (state) => state.weather,
+
+    getFirstTime: (state) => state.firstTime,
+
+    getShowWeatherModal: (state) => state.showWeatherModal,
   },
 
   actions: {
@@ -23,10 +29,16 @@ export const useCountriesStore = defineStore("countriesStore", {
           if (data && data.length >= 0) {
             this.countries = data;
           }
+          resolve();
         } catch (error) {
           console.error("Something went wrong in setCountries()", error);
+          reject();
         }
       });
+    },
+
+    setFirstTime(payload) {
+      this.firstTime = payload;
     },
 
     setWeather(lat, lon, units) {
@@ -37,10 +49,16 @@ export const useCountriesStore = defineStore("countriesStore", {
           if (data) {
             this.weather = data;
           }
+          resolve();
         } catch (error) {
           console.error("Something went wrong in setWeather()", error);
+          reject();
         }
       });
+    },
+
+    setShowWeatherModal(payload) {
+      this.showWeatherModal = payload;
     },
   },
 });
