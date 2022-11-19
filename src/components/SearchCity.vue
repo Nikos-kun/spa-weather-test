@@ -8,8 +8,9 @@
         label="Type the name of a city here"
         variant="underlined"
         v-model="cityText"
+        @keyup="(event) => searchCity(event)"
       ></v-text-field>
-      <v-btn @click="searchCity" class="btn" color="blue">Search</v-btn>
+      <v-btn @click="searchCity(true)" class="btn" color="blue">Search</v-btn>
     </div>
   </div>
 </template>
@@ -27,10 +28,13 @@ export default {
   },
 
   methods: {
-    ...mapActions(useCountriesStore, ["setCountries"]),
+    ...mapActions(useCountriesStore, ["setCountries", "setFirstTime"]),
 
-    async searchCity() {
-      await this.setCountries(this.cityText, this.units);
+    async searchCity(e) {
+      if (e?.keyCode === 13 || e === true) {
+        this.setFirstTime(false);
+        await this.setCountries(this.cityText, this.units);
+      }
     },
   },
 };
