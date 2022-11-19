@@ -18,7 +18,9 @@
       </v-container>
     </v-main>
 
-    <v-bottom-navigation>v-bottom-navigator</v-bottom-navigation>
+    <v-bottom-navigation class="footer"
+      >{{ currentYear }} Spa-Weather-Test
+    </v-bottom-navigation>
   </v-app>
 </template>
 
@@ -33,9 +35,15 @@ export default {
         {
           title: "Home",
           route: "/",
-        }
+        },
       ],
     };
+  },
+
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
+    },
   },
 };
 </script>
@@ -43,5 +51,13 @@ export default {
 <style lang="css" scoped>
 .router-link {
   background-color: beige;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 </style>
